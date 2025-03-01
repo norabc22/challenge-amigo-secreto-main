@@ -37,22 +37,26 @@ function validarNombre(nombre){
 
 function agregarAmigo() {
     //Captura el valor de entrada
-    unAmigo = document.getElementById("amigo").value;
+    let unAmigo = document.getElementById("amigo");
+    let nombreUnAmigo = unAmigo.value;
 
     //Valida que no este vacio
-    if (validarNombre(unAmigo)) {
+    if (validarNombre(nombreUnAmigo)) {
 
         //Agrega el nombre a la lista
-        amigos.push(unAmigo);
+        amigos.push(nombreUnAmigo);
 
         //Limpia el campo de entrada
-        document.querySelector("#amigo").value= "";
+        //document.querySelector("#amigo").value= "";
+       unAmigo.value = "";
+       actualizaListaAmigos();
     } else {
 
         //Muestra mensaje de error
         alert('Por favor, inserte un nombre.');
     }
-    actualizaListaAmigos();
+    unAmigo.focus();
+
 }
 
 /* Implementa una función para actualizar la lista de amigos
@@ -114,7 +118,7 @@ function sortearAmigo(){
         amigoSorteado = amigos[aleatorio];
 
         //Lo muestra en pantalla
-        sorteado.textContent = "El amigo secreto es: "+ amigoSorteado;
+        sorteado.textContent = `El amigo secreto es: ${amigoSorteado}`;
 
         //Vacia la lista y el arreglo de amigos
         lista.innerHTML="";
